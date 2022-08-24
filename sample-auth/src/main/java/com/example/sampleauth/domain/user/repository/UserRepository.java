@@ -10,20 +10,6 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
-@Repository
-public class UserRepository {
-    private final EntityManager em;
-    private final JPAQueryFactory queryFactory;
-
-    public UserRepository(EntityManager em){
-        this.em = em;
-        this.queryFactory = new JPAQueryFactory(em);
-    }
-
-    public Optional<Users> findByUserId(String userId){
-        return Optional.ofNullable(this.em.createQuery("select u from Users u where u.id =:userId", Users.class)
-                .setParameter("userId", userId)
-                .getSingleResult());
-    }
+public interface UserRepository  extends JpaRepository<Users, String>{
 
 }
