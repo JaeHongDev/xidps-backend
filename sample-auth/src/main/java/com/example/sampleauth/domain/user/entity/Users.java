@@ -1,6 +1,7 @@
 package com.example.sampleauth.domain.user.entity;
 
 import com.example.sampleauth.domain.auth.entity.RefreshToken;
+import com.example.sampleauth.domain.company.entity.Company;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,10 @@ public class Users {
     @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private RefreshToken userToken;
 
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.PERSIST)
+    @JoinColumn(name="company_id")
+    private Company company;
+
     @Builder
     public Users(String id, String jwt, UserPassword userPassword) {
         this.id = id;
@@ -47,5 +52,11 @@ public class Users {
     public RefreshToken saveRefreshToken(RefreshToken refreshToken) {
         this.userToken = refreshToken;
         return refreshToken;
+    }
+
+    public void registerCompany(Company company) {
+        this.company = company;
+        this.company.registerUser(this);
+
     }
 }
