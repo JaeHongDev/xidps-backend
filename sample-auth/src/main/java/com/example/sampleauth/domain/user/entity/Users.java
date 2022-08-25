@@ -1,5 +1,6 @@
 package com.example.sampleauth.domain.user.entity;
 
+import com.example.sampleauth.domain.auth.entity.RefreshToken;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,14 +21,12 @@ public class Users {
 
     private String name;
 
-    @OneToOne(mappedBy = "users", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "users", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private UserPassword userPassword;
 
 
-/*
-    @OneToOne(mappedBy = "users", fetch = FetchType.LAZY)
-    private UserToken userToken;
-*/
+    @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private RefreshToken userToken;
 
     @Builder
     public Users(String id, String jwt, UserPassword userPassword) {
@@ -43,5 +42,10 @@ public class Users {
 
     public void changeName(String aa) {
        this.name = aa;
+    }
+
+    public RefreshToken saveRefreshToken(RefreshToken refreshToken) {
+        this.userToken = refreshToken;
+        return refreshToken;
     }
 }
