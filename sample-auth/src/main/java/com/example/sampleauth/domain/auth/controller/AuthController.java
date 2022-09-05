@@ -49,7 +49,6 @@ public class AuthController {
                 .userId(userDetails.getId())
                 .username(userDetails.getUsername())
                 .token(jwt).build());
-
     }
 
 }
