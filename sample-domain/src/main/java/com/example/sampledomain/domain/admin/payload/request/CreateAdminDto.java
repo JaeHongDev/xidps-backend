@@ -2,6 +2,7 @@ package com.example.sampledomain.domain.admin.payload.request;
 
 
 import com.example.sampledomain.domain.admin.entity.AdminEntity;
+import com.example.sampledomain.domain.admin.entity.id.AdminCompanyId;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -31,6 +32,12 @@ public class CreateAdminDto {
                 .id(this.id)
                 .password(password)
                 .name(this.name)
+                .build();
+    }
+
+    public AdminCompanyId toId(){
+        return AdminCompanyId.builder().id(this.id)
+                .affiliation(this.companyId)
                 .build();
     }
 }

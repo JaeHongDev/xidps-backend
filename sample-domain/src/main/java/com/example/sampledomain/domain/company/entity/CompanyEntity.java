@@ -4,12 +4,11 @@ import com.example.sampledomain.domain.admin.entity.AdminEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -17,13 +16,14 @@ import java.util.List;
 @Entity
 public class CompanyEntity {
     @Id
+    @Column(name="company_abberviation")
     private String abbreviation; // 회사 밑 학교 약어
     private String name; //회사명칭
 
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "affiliation")
-    private List<AdminEntity> admins;
+    @OneToMany(mappedBy = "affiliation", fetch = FetchType.LAZY)
+    private List<AdminEntity> admins = new ArrayList<AdminEntity>();
 
 
     @Builder
@@ -36,5 +36,12 @@ public class CompanyEntity {
         this.name         = name;
         this.createdAt    = createdAt;
         this.admins       = admins;
+    }
+
+    public void setAdmin(AdminEntity adminEntity) {
+        if(this.admins == null) {
+            this.admins = new ArrayList<>();
+        }
+        this.admins.add(adminEntity);
     }
 }
