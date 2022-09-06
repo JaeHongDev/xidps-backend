@@ -1,0 +1,20 @@
+
+spring:
+  jpa:
+    show-sql: true
+    database: postgresql
+    hibernate:
+      ddl-auto: create
+      use-new-id-generator-mappings: true
+    properties:
+      hibernate:
+        format_sql: true
+        use-sql-comments: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: "jaehong"
+    password: "1234"
+    url: "jdbc:postgresql://localhost:5432/xidps"
+
+
+
