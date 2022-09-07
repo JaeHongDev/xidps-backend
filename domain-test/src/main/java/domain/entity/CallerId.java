@@ -6,10 +6,15 @@ import lombok.Getter;
 
 @Getter
 public class CallerId {
-    private String uuid; // key
+    private Long index; // key
     private String Id;
     private String name;
     private String departmentName;
+
+    public void setIndex(Long index) {
+        this.index = index;
+    }
+
     private enum status{
         USABLE,
         UNABLE
@@ -20,13 +25,11 @@ public class CallerId {
 
     @Builder
     public CallerId(
-            String uuid,
             String id,
             String name,
             String departmentName,
             String memo,
             CallerIdAuthenticated callerIdAuthenticated) {
-        this.uuid                  = uuid;
         Id                         = id;
         this.name                  = name;
         this.departmentName        = departmentName;
