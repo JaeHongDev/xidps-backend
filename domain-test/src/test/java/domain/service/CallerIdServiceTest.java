@@ -1,12 +1,7 @@
 package domain.service;
 
 import domain.payload.CreateCallerIdByUserRegistrationCertificateDto;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 
 public class CallerIdServiceTest {
     private CallerIdService callerIdService;
@@ -23,7 +18,6 @@ public class CallerIdServiceTest {
     @Test
     public void 통신서비스이용가입증명원위탁방식으로전화등록하기(){
         this.callerIdService = new CallerIdService();
-
         this.callerIdService.addProxyUserRegistrationCertificate()
     }
 }

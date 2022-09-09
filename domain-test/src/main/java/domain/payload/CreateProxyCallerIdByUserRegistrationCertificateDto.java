@@ -12,6 +12,16 @@ public class CreateProxyCallerIdByUserRegistrationCertificateDto {
     private String userRegistrationCertificateFileSize;
     private String userRegistrationCertificateFileType;
 
+    private String proxyUserPowerOfAttorneyFileName;
+    private String proxyUserPowerOfAttorneyFileData;
+    private String proxyUserPowerOfAttorneyFileSize;
+    private String proxyUserPowerOfAttorneyFileType;
+
+    private String proxyUserCardFileName;
+    private String proxyUserCardFileData;
+    private String proxyUserCardFileSize;
+    private String proxyUserCardFileType;
+
     public CallerId toEntity() {
         var callerIdAuthenticated = CallerIdAuthenticated
                 .setUserRegistrationCertificate(
