@@ -19,4 +19,11 @@ public class CallerIdServiceTest {
         Long id = this.callerIdService.addUserRegistrationCertificate(createCallerIdDto);
         Assertions.assertEquals(id, 1L);
     }
+
+    @Test
+    public void 통신서비스이용가입증명원위탁방식으로전화등록하기(){
+        this.callerIdService = new CallerIdService();
+
+        this.callerIdService.addProxyUserRegistrationCertificate()
+    }
 }
