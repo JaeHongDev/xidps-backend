@@ -10,7 +10,7 @@ public class ManageFileRepository {
     private List<ManageFileEntity> fileList = new ArrayList<>();
 
 
-    public void save(CreateManageFileDto createManageFileDto){
-        this.fileList.add(createManageFileDto.toEntity());
+    public void save(ManageFileEntity manageFile){
+        this.fileList.add(manageFile);
     }
 }
