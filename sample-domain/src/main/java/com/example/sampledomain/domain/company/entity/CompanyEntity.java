@@ -4,7 +4,6 @@ import com.example.sampledomain.domain.admin.entity.AdminEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,6 +18,7 @@ public class CompanyEntity {
     @Column(name="company_abberviation")
     private String abbreviation; // 회사 밑 학교 약어
     private String name; //회사명칭
+    private String consonant;
 
     private LocalDateTime createdAt;
 
@@ -30,10 +30,11 @@ public class CompanyEntity {
     public CompanyEntity(
             String abbreviation,
             String name,
-            LocalDateTime createdAt,
+            String consonant, LocalDateTime createdAt,
             List<AdminEntity> admins) {
         this.abbreviation = abbreviation;
         this.name         = name;
+        this.consonant    = consonant;
         this.createdAt    = createdAt;
         this.admins       = admins;
     }

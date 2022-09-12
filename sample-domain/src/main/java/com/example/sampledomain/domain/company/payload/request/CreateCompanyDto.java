@@ -10,19 +10,22 @@ import java.time.LocalDateTime;
 public class CreateCompanyDto {
     private String abbreviation;
     private String name;
+    private String consonant;
 
 
     @Builder
-    public CreateCompanyDto(String abbreviation, String name) {
+    public CreateCompanyDto(String abbreviation, String name, String consonant) {
         this.abbreviation = abbreviation;
         this.name         = name;
+        this.consonant    = consonant;
     }
 
-    public CompanyEntity toEntity(){
+    public CompanyEntity toEntity() {
         return CompanyEntity.builder()
-                .abbreviation(this.abbreviation)
-                .createdAt(LocalDateTime.now())
-                .name(this.name)
-                .build();
+                            .abbreviation(this.abbreviation)
+                            .createdAt(LocalDateTime.now())
+                            .consonant(this.consonant)
+                            .name(this.name)
+                            .build();
     }
 }

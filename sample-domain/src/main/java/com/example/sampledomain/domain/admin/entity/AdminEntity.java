@@ -25,7 +25,6 @@ public class AdminEntity implements Serializable{
     @JoinColumn(name="company_abberivation")
     private CompanyEntity affiliation; // 소속
 
-
     public void setAffiliation(CompanyEntity company){
         this.affiliation = company;
         company.setAdmin(this);
